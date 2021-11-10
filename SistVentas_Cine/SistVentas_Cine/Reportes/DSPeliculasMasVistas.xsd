@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSPeliculasMasVistas" targetNamespace="http://tempuri.org/DSPeliculasMasVistas.xsd" xmlns:mstns="http://tempuri.org/DSPeliculasMasVistas.xsd" xmlns="http://tempuri.org/DSPeliculasMasVistas.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection ConnectionStringObject="Data Source=DESKTOP-14FK4T5\SQLEXPRESS;Initial Catalog=LCI2_INT;Integrated Security=True" IsAppSettingsProperty="false" Modifier="Assembly" Name="desktop-14fk4t5\sqlexpress.LCI2_INT.dbo" ParameterPrefix="@" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="peliculasTableAdapter" GeneratorDataComponentClassName="peliculasTableAdapter" Name="peliculas" UserDataComponentName="peliculasTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="desktop-14fk4t5\sqlexpress.LCI2_INT.dbo" DbObjectName="LCI2_INT.dbo.peliculas" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        p.nombre, p.director, p.duracion_min, COUNT(dc.id_pelicula) AS Expr1
+FROM            peliculas AS p INNER JOIN
+                         detalle_comprobantes AS dc ON p.id_pelicula = dc.id_pelicula
+GROUP BY p.nombre, p.director, p.duracion_min
+ORDER BY Expr1 DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="nombre" DataSetColumn="nombre" />
+              <Mapping SourceColumn="director" DataSetColumn="director" />
+              <Mapping SourceColumn="duracion_min" DataSetColumn="duracion_min" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSPeliculasMasVistas" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSPeliculasMasVistas" msprop:Generator_UserDSName="DSPeliculasMasVistas">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="peliculas" msprop:Generator_TableClassName="peliculasDataTable" msprop:Generator_TableVarName="tablepeliculas" msprop:Generator_TablePropName="peliculas" msprop:Generator_RowDeletingName="peliculasRowDeleting" msprop:Generator_RowChangingName="peliculasRowChanging" msprop:Generator_RowEvHandlerName="peliculasRowChangeEventHandler" msprop:Generator_RowDeletedName="peliculasRowDeleted" msprop:Generator_UserTableName="peliculas" msprop:Generator_RowChangedName="peliculasRowChanged" msprop:Generator_RowEvArgName="peliculasRowChangeEvent" msprop:Generator_RowClassName="peliculasRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nombre" msprop:Generator_ColumnVarNameInTable="columnnombre" msprop:Generator_ColumnPropNameInRow="nombre" msprop:Generator_ColumnPropNameInTable="nombreColumn" msprop:Generator_UserColumnName="nombre" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="director" msprop:Generator_ColumnVarNameInTable="columndirector" msprop:Generator_ColumnPropNameInRow="director" msprop:Generator_ColumnPropNameInTable="directorColumn" msprop:Generator_UserColumnName="director" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="duracion_min" msprop:Generator_ColumnVarNameInTable="columnduracion_min" msprop:Generator_ColumnPropNameInRow="duracion_min" msprop:Generator_ColumnPropNameInTable="duracion_minColumn" msprop:Generator_UserColumnName="duracion_min" type="xs:int" minOccurs="0" />
+              <xs:element name="Expr1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
